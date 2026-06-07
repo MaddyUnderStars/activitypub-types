@@ -7,7 +7,7 @@ import {
 	CcField,
 	ContentField,
 	ContentMapField,
-	ContextField,
+	LdContextField,
 	DurationField,
 	EndTimeField,
 	GeneratorField,
@@ -33,6 +33,7 @@ import {
 	TypeField,
 	UpdatedField,
 	UrlField,
+	ContextField,
 } from "../../fields";
 
 export interface APObject {
@@ -42,7 +43,7 @@ export interface APObject {
 	 *
 	 * {@link https://www.w3.org/TR/activitystreams-core/#jsonld Docs}
 	 */
-	"@context"?: ContextField | ContextField[];
+	"@context"?: LdContextField | LdContextField[];
 
 	/**
 	 * Provides the globally unique identifier for
@@ -366,4 +367,15 @@ export interface APObject {
 	 * {@link https://www.w3.org/TR/activitypub/#shares Docs}
 	 */
 	shares?: SharesField;
+
+	/**
+	 * Identifies the context within which the object exists or an activity was performed.
+	 * 
+	 * The notion of "context" used is intentionally vague.
+	 * The intended function is to serve as a means of grouping objects and activities that share a common
+	 * originating context or purpose. An example could be all activities relating to a common project or event.
+	 * 
+	 * {@link https://www.w3.org/TR/activitystreams-vocabulary/#dfn-context Docs}
+	 */
+	context?: ContextField;
 }

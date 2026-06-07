@@ -42,7 +42,7 @@ export type LanguageTag = string;
 export type MediaType = string;
 export type Duration = string;
 
-export type ContextField = string | Record<string, string>;
+export type LdContextField = string | Record<string, string>;
 export type UrlField = string | APLink;
 export type IdField = string;
 export type TypeField = string;
@@ -71,6 +71,7 @@ export type ToField = string | AnyAPObject | APLink;
 export type BtoField = string | AnyAPObject | APLink;
 export type CcField = string | AnyAPObject | APLink;
 export type BccField = string | AnyAPObject | APLink;
+export type ContextField = string | AnyAPObject | APLink;
 export type GeneratorField = string | AnyAPObject | APLink;
 export type ObjectField = string | AnyAPObject | APLink;
 export type AttributedToField = string | AnyAPObject | APLink | APMention;

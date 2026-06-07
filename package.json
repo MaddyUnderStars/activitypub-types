@@ -34,13 +34,13 @@
 			"email": "siranweb@tuta.io"
 		},
 		{
-			"name": "Spacebarchat",
-			"url": "https://spacebar.chat"
+			"name": "MaddyUnderStars",
+			"url": "https://github.com/maddyunderstars"
 		}
 	],
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/spacebarchat/activitypub-types"
+		"url": "https://github.com/maddyunderstars/activitypub-types"
 	}
 }
