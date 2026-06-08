@@ -1,5 +1,5 @@
 {
-	"name": "activitypub-types",
+	"name": "@shoot/activitypub-types",
 	"version": "2.0.0",
 	"description": "ActivityPub Typescript types",
 	"main": "./dist/index.js",
