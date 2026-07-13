@@ -1,29 +1,16 @@
 {
 	"name": "activitypub-types",
-	"version": "2.0.0",
+	"version": "3.0.0",
 	"description": "ActivityPub Typescript types",
-	"main": "./dist/index.js",
-	"scripts": {
-		"build": "tsc",
-		"prepare": "npm run build"
-	},
-	"devDependencies": {
-		"typescript": "^6.0.3"
-	},
 	"keywords": [
 		"activitypub",
-		"typescript",
-		"types",
+		"activitystreams",
 		"models",
-		"activitystreams"
+		"types",
+		"typescript"
 	],
-	"files": [
-		"dist",
-		"LICENSE",
-		"README.md",
-		"package.json",
-		"package-lock.json"
-	],
+	"license": "MIT",
+	"author": "MaddyUnderStars",
 	"contributors": [
 		{
 			"name": "SiranWeb",
@@ -34,9 +21,39 @@
 			"url": "https://github.com/maddyunderstars"
 		}
 	],
-	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/maddyunderstars/activitypub-types"
+	},
+	"files": [
+		"dist",
+		"LICENSE",
+		"README.md",
+		"package.json",
+		"package-lock.json"
+	],
+	"type": "module",
+	"exports": {
+		"./*": "./dist/*.js"
+	},
+	"scripts": {
+		"build": "tsc",
+		"fmt": "oxfmt",
+		"lint": "oxlint",
+		"prepare": "husky",
+		"postinstall": "npm run build"
+	},
+	"devDependencies": {
+		"@types/node": "^26.1.1",
+		"husky": "^9.1.7",
+		"lint-staged": "^17.0.8",
+		"oxfmt": "^0.58.0",
+		"oxlint": "^1.73.0",
+		"oxlint-tsgolint": "^0.24.0",
+		"typescript": "^7.0.2"
+	},
+	"lint-staged": {
+		"*.{ts,js,md,tsx,jsx,css}": "oxlint --no-error-on-unmatched-pattern",
+		"*": "oxfmt --no-error-on-unmatched-pattern"
 	}
 }
