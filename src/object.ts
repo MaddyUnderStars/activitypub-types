@@ -6,9 +6,10 @@ import { isRecord } from "./util.js";
 
 export type ObjectId = string | URL;
 export type ObjectField = ObjectId | APObject | APLink;
+export type LdContextField = string | Record<string, string>;
 
 export type APObject = {
-	"@context"?: string | Record<string, string>;
+	"@context"?: LdContextField | LdContextField[];
 
 	id: ObjectId;
 
@@ -106,7 +107,14 @@ export type APObject = {
 export type AnyAPObject = APObject | APActivity | APLink | APActor;
 
 export const isAPObject = (obj: unknown): obj is APObject => {
-	return isRecord(obj) && !isAPLink(obj) && !isAPActivity(obj) && !isAPActor(obj);
+	return (
+		isRecord(obj) &&
+		"id" in obj &&
+		isObjectId(obj.id) &&
+		!isAPLink(obj) &&
+		!isAPActivity(obj) &&
+		!isAPActor(obj)
+	);
 };
 
 export const isAnyAPObject = (obj: Record<string, unknown>): obj is AnyAPObject => {

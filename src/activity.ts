@@ -1,7 +1,7 @@
-import { type APObject, isObjectId, type ObjectField, type ObjectId } from "./object.js";
+import { type APObject, isObjectField, type ObjectField } from "./object.js";
 
 export type APActivity = APObject & {
-	actor: ObjectId;
+	actor: ObjectField;
 
 	object?: ObjectField;
 
@@ -21,5 +21,5 @@ export type APActivity = APObject & {
 };
 
 export const isAPActivity = (obj: Record<string, unknown>): obj is APActivity => {
-	return "actor" in obj && isObjectId(obj.actor) && !("attributedTo" in obj);
+	return "actor" in obj && isObjectField(obj.actor) && !("attributedTo" in obj);
 };
