@@ -1,7 +1,7 @@
 {
-	"name": "activitypub-types",
+	"name": "@shootpub/activitypub-types",
 	"version": "3.0.0",
-	"description": "ActivityPub Typescript types",
+	"description": "ActivityPub types with guards and FEP-2277 support",
 	"keywords": [
 		"activitypub",
 		"activitystreams",
@@ -40,8 +40,8 @@
 		"build": "tsc",
 		"fmt": "oxfmt",
 		"lint": "oxlint",
-		"prepare": "husky",
-		"postinstall": "npm run build"
+		"prepare": "husky || true",
+		"prepublishOnly": "npm run build"
 	},
 	"devDependencies": {
 		"@types/node": "^26.1.1",

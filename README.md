@@ -20,7 +20,7 @@ isAPObject(actor); // false
 # Installation
 
 ```sh
-npm i git+https://github.com/MaddyUnderStars/activitypub-types.git
+npm i @shootpub/activitypub-types
 ```
 
 # Credits
