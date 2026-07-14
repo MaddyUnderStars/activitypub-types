@@ -1,8 +1,8 @@
-import { type APObject, isAPObject } from "../object.js";
-import { type APActivity } from "../activity.js";
+import { type APObject } from "../object.js";
+import { type APActivity, isAPActivity } from "../activity.js";
 
 export type APBlock = APActivity & { type: "Block" };
 
 export const isAPBlock = (activity: APObject): activity is APBlock => {
-	return isAPObject(activity) && activity.type == "Block";
+	return isAPActivity(activity) && activity.type == "Block";
 };

@@ -1,8 +1,8 @@
-import { type APObject, isAPObject } from "../object.js";
-import { type APActivity } from "../activity.js";
+import { type APObject } from "../object.js";
+import { type APActivity, isAPActivity } from "../activity.js";
 
 export type APIgnore = APActivity & { type: "Ignore" };
 
 export const isAPIgnore = (activity: APObject): activity is APIgnore => {
-	return isAPObject(activity) && activity.type == "Ignore";
+	return isAPActivity(activity) && activity.type == "Ignore";
 };

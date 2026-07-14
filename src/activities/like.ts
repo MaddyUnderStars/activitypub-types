@@ -1,8 +1,8 @@
-import { type APObject, isAPObject } from "../object.js";
-import { type APActivity } from "../activity.js";
+import { type APObject } from "../object.js";
+import { type APActivity, isAPActivity } from "../activity.js";
 
 export type APLike = APActivity & { type: "Like" };
 
 export const isAPLike = (activity: APObject): activity is APLike => {
-	return isAPObject(activity) && activity.type == "Like";
+	return isAPActivity(activity) && activity.type == "Like";
 };

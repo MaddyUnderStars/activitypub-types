@@ -1,8 +1,8 @@
-import { type APObject, isAPObject } from "../object.js";
-import { type APActivity } from "../activity.js";
+import { type APObject } from "../object.js";
+import { type APActivity, isAPActivity } from "../activity.js";
 
 export type APDelete = APActivity & { type: "Delete" };
 
 export const isAPDelete = (activity: APObject): activity is APDelete => {
-	return isAPObject(activity) && activity.type == "Delete";
+	return isAPActivity(activity) && activity.type == "Delete";
 };
