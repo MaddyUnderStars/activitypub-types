@@ -1,6 +1,6 @@
 {
 	"name": "@shootpub/activitypub-types",
-	"version": "3.1.0",
+	"version": "3.1.1",
 	"description": "ActivityPub types with guards and FEP-2277 support",
 	"keywords": [
 		"activitypub",

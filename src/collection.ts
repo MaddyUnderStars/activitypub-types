@@ -38,7 +38,7 @@ export const isAPCollection = (obj: Record<string, unknown>): obj is APCollectio
 	];
 
 	for (const key of keys) {
-		if (key in obj) continue;
+		if (!(key in obj)) continue;
 		const value = obj[key];
 
 		switch (key) {
@@ -47,7 +47,8 @@ export const isAPCollection = (obj: Record<string, unknown>): obj is APCollectio
 
 				return true;
 			}
-			case "items": {
+			case "items":
+			case "orderedItems": {
 				if (!Array.isArray(value)) break;
 
 				for (const item of value) {
