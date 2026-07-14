@@ -1,6 +1,6 @@
 import { type APActivity, isAPActivity } from "./activity.js";
 import { type APActor, isAPActor } from "./actor.js";
-import { type APCollection } from "./collection.js";
+import { isAPCollection, type APCollection } from "./collection.js";
 import { type APLink, isAPLink } from "./link.js";
 import { isRecord } from "./util.js";
 
@@ -104,25 +104,36 @@ export type APObject = {
 	describes?: string | AnyAPObject;
 };
 
-export type AnyAPObject = APObject | APActivity | APLink | APActor;
+export type AnyAPObject = APObject | APActivity | APLink | APActor | APCollection;
 
 export const isAPObject = (obj: unknown): obj is APObject => {
 	return (
 		isRecord(obj) &&
 		"id" in obj &&
 		isObjectId(obj.id) &&
+		!isAPActor(obj) &&
+		// !isVerificationMethod &&
+		// !isPublicKey &&
 		!isAPLink(obj) &&
 		!isAPActivity(obj) &&
-		!isAPActor(obj)
+		!isAPCollection(obj)
 	);
 };
 
 export const isAnyAPObject = (obj: Record<string, unknown>): obj is AnyAPObject => {
-	return isAPObject(obj) || isAPLink(obj) || isAPActivity(obj) || isAPActor(obj) || isAPLink(obj);
+	return (
+		isAPActor(obj) ||
+		// isVerificationMethod ||
+		// isPublicKey ||
+		isAPLink(obj) ||
+		isAPActivity(obj) ||
+		isAPCollection(obj) ||
+		(isRecord(obj) && "id" in obj && isObjectId(obj.id))
+	);
 };
 
 export const isObjectField = (obj: unknown): obj is ObjectField => {
-	return isObjectId(obj) || (isRecord(obj) && (isAnyAPObject(obj) || isAPLink(obj)));
+	return isObjectId(obj) || (isRecord(obj) && isAnyAPObject(obj));
 };
 
 export const isObjectId = (obj: unknown): obj is ObjectId => {

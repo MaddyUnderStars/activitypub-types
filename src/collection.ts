@@ -1,8 +1,13 @@
-import { isAPLink, type APLink } from "./link.js";
-import { type APObject, isObjectId, type ObjectId } from "./object.js";
+import {
+	type AnyAPObject,
+	type APObject,
+	isAnyAPObject,
+	isObjectId,
+	type ObjectId,
+} from "./object.js";
 import { isRecord } from "./util.js";
 
-export type APCollectionField = ObjectId | APCollection | APLink;
+export type APCollectionField = ObjectId | AnyAPObject;
 
 export type APCollection = APObject & {
 	totalItems?: number;
@@ -75,7 +80,7 @@ export const isAPOrderedCollection = (
 export const isAPCollectionField = (obj: unknown): obj is APCollectionField => {
 	if (isObjectId(obj)) return true;
 
-	if (isRecord(obj) && (isAPCollection(obj) || isAPLink(obj))) return true;
+	if (isRecord(obj) && isAnyAPObject(obj)) return true;
 
 	return false;
 };
