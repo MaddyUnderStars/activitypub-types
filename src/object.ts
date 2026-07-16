@@ -11,7 +11,7 @@ export type LdContextField = string | Record<string, string>;
 export type APObject = {
 	"@context"?: LdContextField | LdContextField[];
 
-	id: ObjectId;
+	id?: ObjectId;
 
 	type?: string;
 
@@ -109,8 +109,7 @@ export type AnyAPObject = APObject | APActivity | APLink | APActor | APCollectio
 export const isAPObject = (obj: unknown): obj is APObject => {
 	return (
 		isRecord(obj) &&
-		"id" in obj &&
-		isObjectId(obj.id) &&
+		("id" in obj ? isObjectId(obj.id) : true) &&
 		!isAPActor(obj) &&
 		// !isVerificationMethod &&
 		// !isPublicKey &&
