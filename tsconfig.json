@@ -1,6 +1,7 @@
 {
+	"include": ["./src/**/*", "./test/**/*"],
 	"compilerOptions": {
-		"rootDir": "./src",
+		"rootDir": ".",
 		"outDir": "./dist",
 		"module": "nodenext",
 		"target": "esnext",

@@ -109,7 +109,6 @@ export type AnyAPObject = APObject | APActivity | APLink | APActor | APCollectio
 export const isAPObject = (obj: unknown): obj is APObject => {
 	return (
 		isRecord(obj) &&
-		"id" in obj &&
 		isObjectId(obj.id) &&
 		!isAPActor(obj) &&
 		// !isVerificationMethod &&
@@ -128,7 +127,7 @@ export const isAnyAPObject = (obj: Record<string, unknown>): obj is AnyAPObject 
 		isAPLink(obj) ||
 		isAPActivity(obj) ||
 		isAPCollection(obj) ||
-		(isRecord(obj) && "id" in obj && isObjectId(obj.id))
+		(isRecord(obj) && isObjectId(obj.id))
 	);
 };
 

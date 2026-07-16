@@ -5,5 +5,5 @@ export type APLink = APObject & {
 };
 
 export const isAPLink = (obj: Record<string, unknown>): obj is APLink => {
-	return "href" in obj && typeof obj.href === "string";
+	return typeof obj.href === "string";
 };

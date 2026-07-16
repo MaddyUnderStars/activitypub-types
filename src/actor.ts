@@ -40,5 +40,5 @@ export type APActor = APObject & {
 };
 
 export const isAPActor = (obj: Record<string, unknown>): obj is APActor => {
-	return "inbox" in obj && isObjectField(obj.inbox);
+	return isObjectField(obj.inbox);
 };

@@ -74,7 +74,13 @@ export const isAPCollection = (obj: Record<string, unknown>): obj is APCollectio
 export const isAPOrderedCollection = (
 	obj: Record<string, unknown>,
 ): obj is APCollection & { orderedItems: APCollectionField[] } => {
-	return "orderedItems" in obj && isAPCollectionField(obj["orderedItems"]);
+	if (!("orderedItems" in obj) || !Array.isArray(obj.orderedItems)) return false;
+
+	for (const item of obj.orderedItems) {
+		if (!isAPCollectionField(item)) return false;
+	}
+
+	return true;
 };
 
 export const isAPCollectionField = (obj: unknown): obj is APCollectionField => {

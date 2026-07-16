@@ -21,5 +21,5 @@ export type APActivity = APObject & {
 };
 
 export const isAPActivity = (obj: Record<string, unknown>): obj is APActivity => {
-	return "actor" in obj && isObjectField(obj.actor) && !("attributedTo" in obj);
+	return isObjectField(obj.actor) && !("attributedTo" in obj);
 };

@@ -1,6 +1,6 @@
 {
 	"name": "@shootpub/activitypub-types",
-	"version": "3.1.3",
+	"version": "3.1.5",
 	"description": "ActivityPub types with guards and FEP-2277 support",
 	"keywords": [
 		"activitypub",
@@ -26,7 +26,7 @@
 		"url": "https://github.com/maddyunderstars/activitypub-types"
 	},
 	"files": [
-		"dist",
+		"dist/src",
 		"LICENSE",
 		"README.md",
 		"package.json",
@@ -34,23 +34,26 @@
 	],
 	"type": "module",
 	"exports": {
-		"./*": "./dist/*.js"
+		"./*": "./dist/src/*.js"
 	},
 	"scripts": {
 		"build": "tsc",
 		"fmt": "oxfmt",
 		"lint": "oxlint",
 		"prepare": "husky || true",
-		"prepublishOnly": "npm run build"
+		"prepublishOnly": "npm run build",
+		"test": "vitest"
 	},
 	"devDependencies": {
 		"@types/node": "^26.1.1",
+		"@vitest/coverage-v8": "^4.1.10",
 		"husky": "^9.1.7",
 		"lint-staged": "^17.0.8",
 		"oxfmt": "^0.58.0",
 		"oxlint": "^1.73.0",
 		"oxlint-tsgolint": "^0.24.0",
-		"typescript": "^7.0.2"
+		"typescript": "^7.0.2",
+		"vitest": "^4.1.10"
 	},
 	"lint-staged": {
 		"*.{ts,js,md,tsx,jsx,css}": "oxlint --no-error-on-unmatched-pattern",
